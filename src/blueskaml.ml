@@ -59,7 +59,8 @@ module Credential = struct
 end
 
 module Bsky_social = struct
-  let base_url = "https://bsky.social/xrpc"
+  let host = "bsky.social"
+  let base_url = "https://" ^ host ^ "/xrpc"
 end
 
 module ResolveHandle = struct
