@@ -1,0 +1,6 @@
+(executable
+ (name demo)
+ (flags :standard)
+ (libraries
+  blueskaml
+  cohttp-lwt-unix))

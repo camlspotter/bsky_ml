@@ -1,0 +1,21 @@
+; (library
+;  (name bluesky)
+;  (public_name bluesky)
+;  (flags :standard)
+;  (libraries
+;     cohttp
+;     cohttp-lwt
+;     cohttp-lwt-unix
+;     yojson
+; 	))
+(library
+ (name blueskaml)
+ (public_name blueskaml)
+ (flags :standard)
+ (libraries
+    lwt_ssl
+    cohttp
+    cohttp-lwt
+    yojson
+    ptime.clock.os)
+ (preprocess (pps ppx_yojson_conv)))
