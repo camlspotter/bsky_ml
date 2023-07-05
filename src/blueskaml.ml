@@ -42,6 +42,8 @@ let add_http_params uri ps =
 module type Client = Cohttp_lwt.S.Client
 type client = (module Client)
 
+module Handle = Handle
+
 (* Insecure! *)
 module Credential = struct
   type t =
