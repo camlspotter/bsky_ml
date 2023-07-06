@@ -226,12 +226,12 @@ module CreateRecord = struct
 
         rkey : string option [@yojson.option];
         validate : bool option [@yojson.option] (* default= true *);
-        swapCommit : string (* TODO cid *) option [@yojson.option];
+        swapCommit : Cid.t option [@yojson.option];
       } [@@deriving yojson]
 
     type resp =
       { uri : Aturi.t;
-        cid : string (* TODO cid *);
+        cid : Cid.t;
       } [@@deriving yojson]
   end
 
@@ -298,7 +298,7 @@ module Search = struct
 
   type post_found =
     { tid : string;
-      cid : string;
+      cid : Cid.t;
       user : user;
       post : post;
     } [@@deriving yojson]

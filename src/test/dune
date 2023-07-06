@@ -1,0 +1,10 @@
+(tests
+  (names
+   leb128
+   multibase_test
+   cid
+	)
+  (modes exe)
+  (libraries alcotest blueskaml)
+  (flags :standard -warn-error -32))
+  

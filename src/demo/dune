@@ -1,6 +1,26 @@
 (executables
  (names demo)
+ (modules demo)
  (flags :standard)
  (libraries
   blueskaml
   cohttp-lwt-unix))
+
+(executables
+ (names subscribe)
+ (modules subscribe)
+ (flags :standard)
+ (libraries
+  blueskaml.unix
+  ))
+
+(executables
+ (names car_decode)
+ (modules car_decode)
+ (flags :standard)
+ (libraries
+  blueskaml
+  websocket-lwt-unix
+  cohttp-lwt-unix
+  cbor
+  ))

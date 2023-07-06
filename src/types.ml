@@ -1,3 +1,15 @@
+module Cid = struct
+  (* Ex "bafyreidfoylpefa2a7muoppun44srdvqdm45dasagnlk3wjjlh6ykf3mde" *)
+
+  type t = string [@@deriving yojson]
+
+  let is_valid _ = true
+
+  let to_string s = s
+  let of_string s = if is_valid s then Some s else None
+  let unsafe_of_string s = s
+end
+
 module Nsid = struct
   type t = string [@@deriving yojson]
 
@@ -42,13 +54,6 @@ module Did = struct
 end
 
 module Aturi = struct
-  (* AT URI Scheme (at://)
-     https://atproto.com/specs/at-uri-scheme
-  *)
-
-  (* Unfortunately, we cannot use https://github.com/mirage/ocaml-uri,
-     since it cannot handle multiple ':' chars in host name part
-  *)
   type t = string [@@deriving yojson]
 
   let to_string s = s
@@ -138,7 +143,7 @@ module Repo = struct
   (* https://atproto.com/lexicons/com-atproto-repo#comatprotorepostrongref *)
   type strongRef =
     { uri : Aturi.t;
-      cid : string (* TODO cid *);
+      cid : Cid.t;
     } [@@deriving yojson]
 end
 
@@ -156,7 +161,7 @@ module Feed = struct
   type postView = {
     type_ : string option [@key "$type"] [@yojson.option];
     uri : Aturi.t;
-    cid : string; (* cid *)
+    cid : Cid.t;
     author : Actor.profileViewBasic; (* app.bsky.actor.defs#profileViewBasic *)
     record : Unknown.t;
     embed : postViewEmbed option [@yojson.option];

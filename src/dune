@@ -17,5 +17,10 @@
     cohttp
     cohttp-lwt
     yojson
-    ptime.clock.os)
+    ptime.clock.os
+    hex
+    cbor
+    websocket-lwt-unix
+    multibase
+    )
  (preprocess (pps ppx_yojson_conv)))

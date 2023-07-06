@@ -1,5 +1,26 @@
+module Cid : sig
+  (** Content IDentifier in multibased text
+
+      Ex. [bafyreidfoylpefa2a7muoppun44srdvqdm45dasagnlk3wjjlh6ykf3mde]
+
+      See https://github.com/multiformats/cid
+  *)
+  type t = private string [@@deriving yojson]
+
+  val to_string : t -> string
+
+  val of_string : string -> t option
+
+  val unsafe_of_string : string -> t
+end
+
 module Nsid : sig
-  (* Ex. [com.example.fooBar] *)
+  (** Namespace Identifier
+
+      Ex. [com.example.fooBar]
+
+      See https://atproto.com/specs/nsid
+  *)
   type t = private string [@@deriving yojson]
 
   val to_string : t -> string
@@ -11,7 +32,12 @@ module Nsid : sig
 end
 
 module Handle : sig
-  (* Ex. [foobar.bsky.social] *)
+  (** Handle
+
+     Ex. [foobar.bsky.social]
+
+     See https://atproto.com/specs/handle
+  *)
   type t = private string [@@deriving yojson]
 
   val to_string : t -> string
@@ -23,6 +49,12 @@ module Handle : sig
 end
 
 module Did : sig
+  (** DID in text
+
+      Ex. [did:plc:rivbee5mfjetayu6fvmhqe3m]
+
+      See https://atproto.com/specs/did
+  *)
   type t = private string [@@deriving yojson]
 
   val parse :
@@ -37,7 +69,17 @@ module Did : sig
 end
 
 module Aturi : sig
+  (** AT URI Scheme in text
+
+      Ex. [at://did:plc:rivbee6mfjetayu6fvmhqe3m/app.bsky.feed.post/3jzscicwdqb2n]
+
+      See https://atproto.com/specs/at-uri-scheme
+  *)
   type t = private string [@@deriving yojson]
+
+  (* Unfortunately, we cannot use https://github.com/mirage/ocaml-uri,
+     since it cannot handle multiple ':' chars in host name part.
+  *)
 
 (*
   val authority : t -> string
@@ -67,7 +109,7 @@ module Unknown : sig
   type t = Yojson.Safe.t [@@deriving yojson]
 end
 
-(* https://atproto.com/lexicons/com-atproto-label#comatprotolabeldefs *)
+(** https://atproto.com/lexicons/com-atproto-label#comatprotolabeldefs *)
 module Label : sig
   type t = {
     type_ : string option [@name "$type"] [@yojson.option];
@@ -79,7 +121,7 @@ module Label : sig
   } [@@deriving yojson]
 end
 
-(* https://atproto.com/lexicons/app-bsky-actor#appbskyactordefs *)
+(** https://atproto.com/lexicons/app-bsky-actor#appbskyactordefs *)
 module Actor : sig
   type viewerState = {
     type_ : string option [@name "$type"] [@yojson.option];
@@ -102,14 +144,14 @@ module Actor : sig
 end
 
 module Repo : sig
-  (* https://atproto.com/lexicons/com-atproto-repo#comatprotorepostrongref *)
+  (** https://atproto.com/lexicons/com-atproto-repo#comatprotorepostrongref *)
   type strongRef =
     { uri : Aturi.t;
-      cid : string (* TODO cid *);
+      cid : Cid.t;
     } [@@deriving yojson]
 end
 
-(* https://atproto.com/lexicons/app-bsky-feed#appbskyfeeddefs *)
+(** https://atproto.com/lexicons/app-bsky-feed#appbskyfeeddefs *)
 module Feed : sig
 
   type postViewEmbed = Yojson.Safe.t [@@deriving yojson]
@@ -123,7 +165,7 @@ module Feed : sig
   type postView = {
     type_ : string option [@name "$type"] [@yojson.option];
     uri : Aturi.t;
-    cid : string; (* cid *)
+    cid : Cid.t;
     author : Actor.profileViewBasic; (* app.bsky.actor.defs#profileViewBasic *)
     record : Unknown.t;
     embed : postViewEmbed option [@yojson.option];

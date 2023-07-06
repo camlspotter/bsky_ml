@@ -17,3 +17,19 @@ let of_yojson_string conv s =
   match catch Yojson.Safe.from_string s with
   | Error _ -> Error (`Not_json s)
   | Ok j -> of_yojson conv j
+
+let input_file fn =
+  let ic = open_in_bin fn in
+  let buf = Buffer.create 1024 in
+  let bytes = Bytes.create 1024 in
+  let rec loop () =
+    let nread = input ic bytes 0 1024 in
+    if nread = 0 then (
+      close_in ic;
+      Buffer.contents buf
+    ) else (
+      Buffer.add_subbytes buf bytes 0 nread;
+      loop ()
+    )
+  in
+  loop ()
