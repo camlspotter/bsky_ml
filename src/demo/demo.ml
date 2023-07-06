@@ -1,7 +1,7 @@
 open Lwt.Syntax
 open Blueskaml
-
-let client : client = (module Cohttp_lwt_unix.Client)
+open Utils
+open Types
 
 let cred =
   let home =
@@ -23,29 +23,47 @@ let cred =
 
 let () =
   Lwt_main.run @@
-  let* resp = ResolveHandle.f client cred.identifier in
-  Format.eprintf "%a@." ResolveHandle.pp (Result.get_ok resp);
+  let client = (module Cohttp_lwt_unix.Client : Cohttp_lwt.S.Client) in
+  let conn = Xrpc.Conn.create client "bsky.social" in
+  let* resp = Xrpc.ResolveHandle.f conn cred.identifier in
+  Format.eprintf "%a@."
+    (pp_as_json Xrpc.ResolveHandle.yojson_of_resp)
+    (Result.get_ok resp);
 
   let* resp =
-    CreateSession.f client
+    Xrpc.CreateSession.f conn
       ~identifier:cred.identifier
       ~password:cred.password
   in
   let session = Result.get_ok resp in
-  Format.eprintf "%a@." CreateSession.pp session;
-
-  let* resp = GetTimeline.f ~limit: 1 client session in
-  Format.eprintf "%a@." GetTimeline.pp (Result.get_ok resp);
-
-  let* resp = Post.f client ~text:"Hello from blueskaml.ml" session in
-  Format.eprintf "%a@." CreateRecord.pp (Result.get_ok resp);
-
-  let* resp = Search.posts client "破壊" in
-  Format.eprintf "%a@." Search.pp (Result.get_ok resp);
+  Format.eprintf "%a@."
+    (pp_as_json Session.yojson_of_t) session;
 
   let* resp =
-    GetAuthorFeed.f client ~actor:session.handle ~limit:3 session in
+    Xrpc.GetAuthorFeed.f
+      ~actor: (Handle.to_string session.handle)
+      ~limit: 1
+      conn session
+  in
+  Format.eprintf "%a@."
+    (pp_as_json Xrpc.GetAuthorFeed.yojson_of_resp) (Result.get_ok resp);
+
+  let* resp = Xrpc.GetTimeline.f ~limit: 1 conn session in
+  Format.eprintf "%a@."
+    (pp_as_json Xrpc.GetTimeline.yojson_of_resp) (Result.get_ok resp);
+
+  let* resp = Xrpc.Search.posts client "破壊" in
+  Format.eprintf "%a@."
+    (pp_as_json Xrpc.Search.yojson_of_resp) (Result.get_ok resp);
+
+  let* resp = Xrpc.Post.f conn ~text:"Hello from Blueskaml" session in
+  Format.eprintf "%a@."
+    (pp_as_json Xrpc.CreateRecord.yojson_of_resp) (Result.get_ok resp);
+
   let resp = Result.get_ok resp in
-  Format.eprintf "%a@." GetAuthorFeed.pp resp;
+  let subject = Repo.{ uri = resp.uri; cid = resp.cid } in
+  let* resp = Xrpc.Like.f conn ~subject session in
+  Format.eprintf "%a@."
+    (pp_as_json Xrpc.CreateRecord.yojson_of_resp) (Result.get_ok resp);
 
   Lwt.return_unit

@@ -1,5 +1,5 @@
-(executable
- (name demo)
+(executables
+ (names demo)
  (flags :standard)
  (libraries
   blueskaml
