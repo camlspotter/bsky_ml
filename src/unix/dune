@@ -1,8 +1,0 @@
-(library
- (name blueskaml_unix)
- (public_name blueskaml.unix)
- (flags :standard)
- (libraries
-    blueskaml
-    websocket-lwt-unix)
- (preprocess (pps ppx_yojson_conv)))

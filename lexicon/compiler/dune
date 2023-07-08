@@ -1,0 +1,6 @@
+(executables
+ (names compiler)
+ (flags :standard)
+ (libraries
+   blueskaml.base
+   blueskaml.lexicon))

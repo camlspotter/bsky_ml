@@ -1,0 +1,12 @@
+(library
+ (name blueskaml_lexicon)
+ (public_name blueskaml.lexicon)
+ (flags :standard -w -30)
+ (libraries
+    blueskaml.base
+    yojson
+    hex
+    ppxlib
+    ocamlgraph
+    )
+ (preprocess (pps ppx_yojson_conv ppxlib.metaquot)))

@@ -1,26 +1,24 @@
-; (library
-;  (name bluesky)
-;  (public_name bluesky)
-;  (flags :standard)
-;  (libraries
-;     cohttp
-;     cohttp-lwt
-;     cohttp-lwt-unix
-;     yojson
-; 	))
 (library
  (name blueskaml)
  (public_name blueskaml)
- (flags :standard)
+ (flags :standard -w -30)
  (libraries
-    lwt_ssl
-    cohttp
-    cohttp-lwt
-    yojson
-    ptime.clock.os
-    hex
-    cbor
-    websocket-lwt-unix
-    multibase
-    )
- (preprocess (pps ppx_yojson_conv)))
+  yojson
+  ppx_yojson_conv_lib
+  blueskaml.base
+
+  lwt_ssl
+  cohttp
+  cohttp-lwt
+  ptime.clock.os
+  hex
+  multibase
+)
+ (preprocess (pps ppx_yojson_conv))
+)
+
+; (rule
+;   (targets lexicon.ml xrpc.ml)
+;   (deps (:gen ../lexicon/compiler/compiler.exe))
+;   (action (run %{gen} ../lexicon/compiler/_lexicons)))
+

@@ -1,0 +1,9 @@
+(library
+ (name blueskaml_poc_unix)
+ (public_name blueskaml.poc.unix)
+ (flags :standard)
+ (libraries
+    blueskaml.base
+    blueskaml.poc
+    websocket-lwt-unix)
+ (preprocess (pps ppx_yojson_conv)))

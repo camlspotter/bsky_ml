@@ -1,0 +1,17 @@
+(library
+ (name blueskaml_poc)
+ (public_name blueskaml.poc)
+ (flags :standard -open Blueskaml_base)
+ (libraries
+    blueskaml.base
+    lwt_ssl
+    cohttp
+    cohttp-lwt
+    yojson
+    ptime.clock.os
+    hex
+    cbor
+    websocket-lwt-unix
+    multibase
+    )
+ (preprocess (pps ppx_yojson_conv)))
