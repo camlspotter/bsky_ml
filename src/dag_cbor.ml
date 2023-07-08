@@ -1,5 +1,24 @@
 let json_of_cid cid_bin =
-  `String (Result.get_ok @@ Multibase.encode `Base32 cid_bin) (* CID *)
+  let f cid_bin off =
+    let cid, _ = Result.get_ok @@ Car.Cid.decode (cid_bin, off) in
+    match cid with
+    | Car.Cid.V0 s ->
+        `String (Result.get_ok @@ Multibase.encode `Base32 s)
+    | Car.Cid.V1 _ ->
+        `String (Result.get_ok @@ Multibase.encode `Base32 (Car.Cid.encode cid))
+
+  in
+  try
+    if cid_bin.[0] = '\000' then
+      (* link *)
+      let cid = f cid_bin 1 in
+      `Variant ("Link", Some cid)
+    else
+      f cid_bin 0
+  with
+  | _ ->
+      let `Hex h = Hex.of_string cid_bin in
+      `Variant ("StrangeCID", Some ( `String h))
 
 let rec json_of_car block_bin =
   let (head, blocks), _ = Result.get_ok @@ Car.decode (block_bin, 0) in
