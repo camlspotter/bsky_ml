@@ -9,5 +9,6 @@ let () =
   Event.SubscribeRepos.f conn
     (fun () cbors ->
        Seq.iter (fun cbor ->
-           Format.eprintf "@[%a@]@." Cbor.pp cbor) cbors;
+           let json = Dag_cbor.to_json cbor in
+           Format.eprintf "@[%a@]@." (Yojson.Safe.pretty_print ~std:false) json) cbors;
        `Continue ()) ()
