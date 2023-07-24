@@ -1,4 +1,5 @@
 open Lwt.Syntax
+open Blueskaml_car
 open Blueskaml_poc
 
 module W = Websocket_lwt_unix

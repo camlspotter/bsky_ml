@@ -1,4 +1,5 @@
 open Blueskaml_base
+open Blueskaml_car
 open Blueskaml_poc
 
 type conn = Websocket_lwt_unix.conn

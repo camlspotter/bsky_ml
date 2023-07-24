@@ -4,6 +4,7 @@
  (flags :standard)
  (libraries
     blueskaml.base
+    blueskaml.car
     blueskaml.poc
     websocket-lwt-unix)
  (preprocess (pps ppx_yojson_conv)))

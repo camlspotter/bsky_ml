@@ -1,0 +1,12 @@
+(library
+ (name blueskaml_car)
+ (public_name blueskaml.car)
+ (flags :standard -open Blueskaml_base)
+ (libraries
+    blueskaml.base
+    yojson
+    hex
+    cbor
+    multibase
+    )
+ (preprocess (pps ppx_yojson_conv)))

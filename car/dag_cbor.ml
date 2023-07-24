@@ -12,7 +12,8 @@ let json_of_cid cid_bin =
     if cid_bin.[0] = '\000' then
       (* link *)
       let cid = f cid_bin 1 in
-      `Variant ("Link", Some cid)
+      (* `Variant ("Link", Some cid) *) (* XXX *)
+      cid
     else
       f cid_bin 0
   with
@@ -20,15 +21,7 @@ let json_of_cid cid_bin =
       let `Hex h = Hex.of_string cid_bin in
       `Variant ("StrangeCID", Some ( `String h))
 
-let rec json_of_car block_bin =
-  let (head, blocks), _ = Result.get_ok @@ Car.decode (block_bin, 0) in
-  let json_of_block = function
-    | `Dag_cbor (cid, cbor) -> `Tuple [json_of_cid (Car.Cid.encode cid); to_json cbor]
-    | `Raw (cid, string) -> `Tuple [json_of_cid (Car.Cid.encode cid); `String string]
-  in
-  `Tuple [to_json head; `List (List.map json_of_block blocks)]
-
-and to_json = function
+let rec to_json = function
   | `Array ts -> `List (List.map to_json ts)
   | `Bool b -> `Bool b
   | `Bytes s -> `String s
@@ -42,6 +35,16 @@ and to_json = function
   | `Undefined -> invalid_arg "Cbor.to_json: Undefined"
   | `Map kvs ->
       `Assoc (List.map (function
+(*
           | (`Text "blocks", `Bytes bs) -> "blocks", json_of_car bs
+*)
           | (`Text s,v) -> s, to_json v
           | _ -> invalid_arg "Cbor.to_json: Map") kvs)
+
+let json_of_car block_bin =
+  let (head, blocks), _ = Result.get_ok @@ Car.decode (block_bin, 0) in
+  let json_of_block = function
+    | `Dag_cbor (cid, cbor) -> `Tuple [json_of_cid (Car.Cid.encode cid); to_json cbor]
+    | `Raw (cid, string) -> `Tuple [json_of_cid (Car.Cid.encode cid); `String string]
+  in
+  `Tuple [to_json head; `List (List.map json_of_block blocks)]
