@@ -1,0 +1,5 @@
+(executable
+ (name subscribe)
+ (flags :standard)
+ (libraries
+	blueskaml.unix))
