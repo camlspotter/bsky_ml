@@ -1,4 +1,4 @@
-Experimental library to access BlueSky
+Experimental library to access BlueSky via the AT Protocol
 
 - poc : PoC code to understand the protocol
 - lexicon : Lexicon compiler
@@ -10,3 +10,10 @@ Experimental library to access BlueSky
     % cd lexicon/compiler
     % dune exec ./compiler.exe
     ```
+Demos
+
+- src/demo/demo.exe
+  Access to BlueSky: authentication, getting the timeline, posting, search etc.
+
+- src/unix/demo/subscribe.exe
+  Dump the stream from BlueSky's Firehose API
