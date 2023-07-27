@@ -1,4 +1,4 @@
-open Blueskaml_car
+open Bsky_ml_car
 
 let () =
   let base32 = "bafyreidfoylpefa2a7muoppun44srdvqdm45dasagnlk3wjjlh6ykf3mde" in

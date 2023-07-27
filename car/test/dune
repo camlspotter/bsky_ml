@@ -5,6 +5,6 @@
    cid
 	)
   (modes exe)
-  (libraries alcotest blueskaml.car)
+  (libraries alcotest bsky_ml.car)
   (flags :standard -warn-error -32))
   

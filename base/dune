@@ -1,6 +1,6 @@
 (library
- (name blueskaml_base)
- (public_name blueskaml.base)
+ (name bsky_ml_base)
+ (public_name bsky_ml.base)
  (flags :standard)
  (libraries
     yojson

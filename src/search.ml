@@ -1,7 +1,7 @@
 (* This is NOT an XRPC *)
 
-open Blueskaml_base.Utils
-open Blueskaml_base.Types
+open Bsky_ml_base.Utils
+open Bsky_ml_base.Types
 open Xrpc_base
 open Lwt.Syntax
 

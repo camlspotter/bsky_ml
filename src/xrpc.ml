@@ -1,5 +1,5 @@
 include Xrpc_base
-open Blueskaml_base.Types
+open Bsky_ml_base.Types
 open Lexicon
 
 module Atproto = struct

@@ -1,6 +1,6 @@
 open Lwt.Syntax
-open Blueskaml_car
-open Blueskaml_poc
+open Bsky_ml_car
+open Bsky_ml_poc
 
 module W = Websocket_lwt_unix
 
@@ -46,7 +46,7 @@ let read conn =
 
 
 module SubscribeRepos = struct
-  open Blueskaml_base.Types
+  open Bsky_ml_base.Types
 
   let nsid = Nsid.unsafe_of_string "com.atproto.sync.subscribeRepos"
 

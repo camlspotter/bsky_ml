@@ -1,6 +1,6 @@
-(* open Blueskaml.Types *)
-open Blueskaml_base.Utils
-open Blueskaml_lexicon
+(* open Bsky_ml.Types *)
+open Bsky_ml_base.Utils
+open Bsky_ml_lexicon
 
 let files = {|
 _lexicons/app/bsky/embed/record.json

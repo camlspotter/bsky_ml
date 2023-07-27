@@ -2,5 +2,5 @@
  (names compiler)
  (flags :standard)
  (libraries
-   blueskaml.base
-   blueskaml.lexicon))
+   bsky_ml.base
+   bsky_ml.lexicon))

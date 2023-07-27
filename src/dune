@@ -1,11 +1,11 @@
 (library
- (name blueskaml)
- (public_name blueskaml)
+ (name bsky_ml)
+ (public_name bsky_ml)
  (flags :standard -w -30)
  (libraries
   yojson
   ppx_yojson_conv_lib
-  blueskaml.base
+  bsky_ml.base
 
   lwt_ssl
   cohttp

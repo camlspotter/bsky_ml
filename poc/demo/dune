@@ -3,9 +3,9 @@
  (modules demo)
  (flags :standard)
  (libraries
-  blueskaml.base
-  blueskaml.car
-  blueskaml.poc
+  bsky_ml.base
+  bsky_ml.car
+  bsky_ml.poc
   cohttp-lwt-unix))
 
 (executables
@@ -13,9 +13,9 @@
  (modules subscribe)
  (flags :standard)
  (libraries
-  blueskaml.base
-  blueskaml.car
-  blueskaml.poc.unix
+  bsky_ml.base
+  bsky_ml.car
+  bsky_ml.poc.unix
   ))
 
 (executables
@@ -23,9 +23,9 @@
  (modules car_decode)
  (flags :standard)
  (libraries
-  blueskaml.base
-  blueskaml.car
-  blueskaml.poc
+  bsky_ml.base
+  bsky_ml.car
+  bsky_ml.poc
   websocket-lwt-unix
   cohttp-lwt-unix
   cbor

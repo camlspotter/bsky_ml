@@ -1,4 +1,4 @@
-open Blueskaml_base.Types
+open Bsky_ml_base.Types
 
 module Path : sig
   type t = { nsid : Nsid.t; names : string list; }

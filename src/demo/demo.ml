@@ -1,7 +1,7 @@
 open Lwt.Syntax
-open Blueskaml
-open Blueskaml_base.Utils
-module Credential = Blueskaml_base.Credential
+open Bsky_ml
+open Bsky_ml_base.Utils
+module Credential = Bsky_ml_base.Credential
 
 let cred =
   let home =
@@ -60,7 +60,7 @@ let () =
   Format.eprintf "Ok %a@."
     (pp_as_json Search.yojson_of_output) (Result.get_ok resp);
 
-  let* resp = Post.f ~session conn "Hello from Blueskaml" in
+  let* resp = Post.f ~session conn "Hello from Bsky_ml" in
   Format.eprintf "Ok %a@."
     (pp_as_json Post.yojson_of_output) (Result.get_ok resp);
 

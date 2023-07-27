@@ -1,6 +1,6 @@
-open Blueskaml_car
-open Blueskaml_poc
-open Blueskaml_poc_unix
+open Bsky_ml_car
+open Bsky_ml_poc
+open Bsky_ml_poc_unix
 
 let () =
   Lwt_main.run @@

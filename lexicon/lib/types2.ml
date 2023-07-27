@@ -1,7 +1,7 @@
 (* OCaml type system friendly definitions of lexicon types *)
 
-open Blueskaml_base.Utils
-open Blueskaml_base.Types
+open Bsky_ml_base.Utils
+open Bsky_ml_base.Types
 
 let ocaml_name_of_format s =
   String.(uncapitalize_ascii @@ map (function '-' -> '_' | c -> c) s)

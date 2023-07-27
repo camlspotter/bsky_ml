@@ -1,6 +1,6 @@
-open Blueskaml_base.Utils
-open Blueskaml_base.Types
-module Credential = Blueskaml_base.Credential
+open Bsky_ml_base.Utils
+open Bsky_ml_base.Types
+module Credential = Bsky_ml_base.Credential
 open Lwt.Syntax
 
 type type_ =

@@ -5,7 +5,7 @@ module Ast_builder = Ast_builder.Make(struct let loc = Location.none end)
 open Ast_builder
 
 open Types2
-open Blueskaml_base.Utils
+open Bsky_ml_base.Utils
 
 let find_optional_field name kvs conv =
   let rec find_optional_field acc = function
@@ -308,7 +308,7 @@ let module_name_of_path path =
         match
           List.rev
           @@ String.split_on_char '.'
-            (Blueskaml_base.Types.Nsid.to_string nsid)
+            (Bsky_ml_base.Types.Nsid.to_string nsid)
         with
         | n::rest -> String.capitalize_ascii n, List.rev rest
         | [] -> assert false

@@ -1,9 +1,9 @@
 (library
- (name blueskaml_lexicon)
- (public_name blueskaml.lexicon)
+ (name bsky_ml_lexicon)
+ (public_name bsky_ml.lexicon)
  (flags :standard -w -30)
  (libraries
-    blueskaml.base
+    bsky_ml.base
     yojson
     hex
     ppxlib

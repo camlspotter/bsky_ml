@@ -1,10 +1,10 @@
 (library
- (name blueskaml_poc_unix)
- (public_name blueskaml.poc.unix)
+ (name bsky_ml_poc_unix)
+ (public_name bsky_ml.poc.unix)
  (flags :standard)
  (libraries
-    blueskaml.base
-    blueskaml.car
-    blueskaml.poc
+    bsky_ml.base
+    bsky_ml.car
+    bsky_ml.poc
     websocket-lwt-unix)
  (preprocess (pps ppx_yojson_conv)))

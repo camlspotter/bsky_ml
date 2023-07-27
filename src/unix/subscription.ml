@@ -1,6 +1,6 @@
 open Lwt.Syntax
-open Blueskaml_car
-open Blueskaml
+open Bsky_ml_car
+open Bsky_ml
 
 module W = Websocket_lwt_unix
 
@@ -44,7 +44,7 @@ let read conn =
   in
   loop ()
 
-open Blueskaml_base.Types
+open Bsky_ml_base.Types
 
 module type SubscriptionIntf = sig
   val nsid : Nsid.t

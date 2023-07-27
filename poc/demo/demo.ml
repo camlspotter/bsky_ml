@@ -1,6 +1,6 @@
 open Lwt.Syntax
-open Blueskaml_base
-open Blueskaml_poc
+open Bsky_ml_base
+open Bsky_ml_poc
 open Utils
 open Types
 
@@ -57,7 +57,7 @@ let () =
   Format.eprintf "%a@."
     (pp_as_json Xrpc.Search.yojson_of_resp) (Result.get_ok resp);
 
-  let* resp = Xrpc.Post.f conn ~text:"Hello from Blueskaml" session in
+  let* resp = Xrpc.Post.f conn ~text:"Hello from Bsky_ml" session in
   Format.eprintf "%a@."
     (pp_as_json Xrpc.CreateRecord.yojson_of_resp) (Result.get_ok resp);
 

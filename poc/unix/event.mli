@@ -1,6 +1,6 @@
-open Blueskaml_base
-open Blueskaml_car
-open Blueskaml_poc
+open Bsky_ml_base
+open Bsky_ml_car
+open Bsky_ml_poc
 
 type conn = Websocket_lwt_unix.conn
 

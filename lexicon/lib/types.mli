@@ -1,6 +1,6 @@
 (** The types of AT protocol's lexicons *)
 
-open Blueskaml_base
+open Bsky_ml_base
 open Utils
 open Types
 

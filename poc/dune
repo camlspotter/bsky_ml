@@ -1,9 +1,9 @@
 (library
- (name blueskaml_poc)
- (public_name blueskaml.poc)
- (flags :standard -open Blueskaml_base)
+ (name bsky_ml_poc)
+ (public_name bsky_ml.poc)
+ (flags :standard -open Bsky_ml_base)
  (libraries
-    blueskaml.base
+    bsky_ml.base
     lwt_ssl
     cohttp
     cohttp-lwt

@@ -2,4 +2,4 @@
  (name subscribe)
  (flags :standard)
  (libraries
-	blueskaml.unix))
+	bsky_ml.unix))

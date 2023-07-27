@@ -3,5 +3,5 @@
  (modules demo)
  (flags :standard)
  (libraries
-  blueskaml
+  bsky_ml
   cohttp-lwt-unix))

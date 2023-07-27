@@ -1,4 +1,4 @@
-open Blueskaml_base.Utils
+open Bsky_ml_base.Utils
 
 let load_lexicons files =
   List.map (fun fn ->
@@ -158,7 +158,7 @@ let pp_xrpcs ppf xrpcs =
   let xrpcs = Tree.unflatten ~compare:String.compare xrpcs in
   let () = Format.fprintf ppf
       {|include Xrpc_base
-open Blueskaml_base.Types
+open Bsky_ml_base.Types
 open Lexicon
 
       |}
