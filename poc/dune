@@ -1,7 +1,10 @@
 (library
  (name bsky_ml_poc)
  (public_name bsky_ml.poc)
- (flags :standard -open Bsky_ml_base)
+ (flags :standard
+   -open Bsky_ml_base
+   -open Ppx_yojson_conv_lib.Yojson_conv
+ )
  (libraries
     bsky_ml.base
     lwt_ssl

@@ -20,6 +20,9 @@ depends: [
   "multibase"
   "cbor"
   "ppx_yojson_conv"
+  "ppx_yojson_conv_lib"
+  "ocamlgraph"
+  "alcotest"
   "odoc" {with-doc}
 ]
 build: [

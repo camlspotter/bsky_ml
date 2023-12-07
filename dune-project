@@ -28,7 +28,10 @@
 	   hex
 	   multibase
 	   cbor
-	   ppx_yojson_conv)
+	   ppx_yojson_conv
+	   ppx_yojson_conv_lib
+	   ocamlgraph
+           alcotest)
 ; (tags (topics "to describe" your project))
  (version "1.0.0"))
 

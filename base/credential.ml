@@ -1,3 +1,5 @@
+open Ppx_yojson_conv_lib
+
 type t =
   { identifier : string;
     password : string;

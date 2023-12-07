@@ -1,7 +1,9 @@
 (library
  (name bsky_ml_lexicon)
  (public_name bsky_ml.lexicon)
- (flags :standard -w -30)
+ (flags :standard -w -30
+   -open Ppx_yojson_conv_lib.Yojson_conv
+ )
  (libraries
     bsky_ml.base
     yojson

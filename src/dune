@@ -1,7 +1,9 @@
 (library
  (name bsky_ml)
  (public_name bsky_ml)
- (flags :standard -w -30)
+ (flags :standard -w -30
+   -open Ppx_yojson_conv_lib.Yojson_conv
+ )
  (libraries
   yojson
   ppx_yojson_conv_lib
