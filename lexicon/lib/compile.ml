@@ -2,6 +2,7 @@ open Bsky_ml_base.Utils
 
 let load_lexicons files =
   List.map (fun fn ->
+      Format.eprintf "Loading %s@." fn;
       Result.get_ok @@ Types.load_lexicon fn) files
 
 let defs_of_lexicon (lexicon : Types.lexicon) =

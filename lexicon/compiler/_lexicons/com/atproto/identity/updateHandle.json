@@ -4,14 +4,14 @@
   "defs": {
     "main": {
       "type": "procedure",
-      "description": "Updates the handle of the account",
+      "description": "Updates the handle of the account.",
       "input": {
         "encoding": "application/json",
         "schema": {
           "type": "object",
           "required": ["handle"],
           "properties": {
-            "handle": {"type": "string", "format": "handle"}
+            "handle": { "type": "string", "format": "handle" }
           }
         }
       }

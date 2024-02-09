@@ -68,7 +68,8 @@ let resolve_ref_id cur_id (ref_id : Types.ref_id) =
   | _, {nsid=Some _nsid; name=_} -> ref_id
 
 type error = Types.error =
-  { name : string
+  { name : string;
+    description : string option;
   } [@@deriving yojson]
 
 type ty =
@@ -97,7 +98,8 @@ and token = Types.token =
 
 and string_ =
   { description : string option;
-    knownValues : string list option;
+    knownValues: string list option [@yojson.option];
+    enum : string list option;
     minLength : int option;
     maxLength : int option;
     maxGraphemes : int option;
@@ -107,7 +109,8 @@ and string_ =
 and format =
   { format : string;
     description : string option;
-    knownValues : string list option;
+    knownValues: string list option [@yojson.option];
+    enum : string list option;
     minLength : int option;
     maxLength : int option;
     maxGraphemes : int option;
@@ -280,6 +283,7 @@ let rec conv_ty path (Types.Ty type_) : ty =
        | None ->
            String { description = string_.description;
                     knownValues = string_.knownValues;
+                    enum = string_.enum;
                     minLength = string_.minLength;
                     maxLength = string_.maxLength;
                     maxGraphemes = string_.maxGraphemes;
@@ -287,6 +291,7 @@ let rec conv_ty path (Types.Ty type_) : ty =
        | Some format ->
            Format { format; description = string_.description;
                     knownValues = string_.knownValues;
+                    enum = string_.enum;
                     minLength = string_.minLength;
                     maxLength = string_.maxLength;
                     maxGraphemes = string_.maxGraphemes;
@@ -733,6 +738,7 @@ let typedecls_of_datatype datatype =
       Option.to_list @@ typedecl_of_ty path ty
 
 let typedecls_of_def path def =
+  (* Format.eprintf "Path: %a@." Path.pp path; *)
   match def with
   | Datatype dt ->
       typedecls_of_datatype dt

@@ -8,7 +8,8 @@ let add_type t assoc =
   | _ -> invalid_arg "add_type"
 
 type error =
-  { name : string
+  { name : string;
+    description : string option [@yojson.option];
   } [@@deriving yojson]
 
 type 'ty object_ =
@@ -25,10 +26,8 @@ type token =
 type string_ =
   { format : string option [@yojson.option];
     description : string option [@yojson.option];
-
-    (** [string] can be [Nsid.t], then it defines an enum type *)
-    knownValues : string list option [@yojson.option];
-
+    knownValues: string list option [@yojson.option];
+    enum : string list option [@yojson.option];
     minLength : int option [@yojson.option];
     maxLength : int option [@yojson.option];
     maxGraphemes : int option [@yojson.option];
@@ -175,6 +174,7 @@ type procedure =
     input : input option [@yojson.option];
     output : output option [@yojson.option];
     errors : error list option [@yojson.option];
+    parameters : ty option [@yojson.option];
   } [@@deriving yojson]
 
 (** Collection of [ty] whose key is [key] *)

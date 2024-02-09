@@ -4,7 +4,7 @@
   "defs": {
     "main": {
       "type": "subscription",
-      "description": "Subscribe to label updates",
+      "description": "Subscribe to label updates.",
       "parameters": {
         "type": "params",
         "properties": {
@@ -17,21 +17,16 @@
       "message": {
         "schema": {
           "type": "union",
-          "refs": [
-            "#labels",
-            "#info"
-          ]
+          "refs": ["#labels", "#info"]
         }
       },
-      "errors": [
-        {"name": "FutureCursor"}
-      ]
+      "errors": [{ "name": "FutureCursor" }]
     },
     "labels": {
       "type": "object",
       "required": ["seq", "labels"],
       "properties": {
-        "seq": {"type": "integer"},
+        "seq": { "type": "integer" },
         "labels": {
           "type": "array",
           "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }

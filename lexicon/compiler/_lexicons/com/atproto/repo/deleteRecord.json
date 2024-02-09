@@ -28,19 +28,17 @@
             "swapRecord": {
               "type": "string",
               "format": "cid",
-              "description": "Compare and swap with the previous record by cid."
+              "description": "Compare and swap with the previous record by CID."
             },
             "swapCommit": {
               "type": "string",
               "format": "cid",
-              "description": "Compare and swap with the previous commit by cid."
+              "description": "Compare and swap with the previous commit by CID."
             }
           }
         }
       },
-      "errors": [
-        {"name": "InvalidSwap"}
-      ]
+      "errors": [{ "name": "InvalidSwap" }]
     }
   }
 }

@@ -4,10 +4,11 @@
   "defs": {
     "main": {
       "type": "query",
+      "description": "Get the count of unread notifications.",
       "parameters": {
         "type": "params",
         "properties": {
-          "seenAt": { "type": "string", "format": "datetime"}
+          "seenAt": { "type": "string", "format": "datetime" }
         }
       },
       "output": {
@@ -16,7 +17,7 @@
           "type": "object",
           "required": ["count"],
           "properties": {
-            "count": { "type": "integer"}
+            "count": { "type": "integer" }
           }
         }
       }

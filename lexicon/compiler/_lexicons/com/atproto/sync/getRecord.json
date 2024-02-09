@@ -4,7 +4,7 @@
   "defs": {
     "main": {
       "type": "query",
-      "description": "Gets blocks needed for existence or non-existence of record.",
+      "description": "Get blocks needed for existence or non-existence of record.",
       "parameters": {
         "type": "params",
         "required": ["did", "collection", "rkey"],
@@ -14,8 +14,8 @@
             "format": "did",
             "description": "The DID of the repo."
           },
-          "collection": {"type": "string", "format": "nsid"},
-          "rkey": {"type": "string" },
+          "collection": { "type": "string", "format": "nsid" },
+          "rkey": { "type": "string" },
           "commit": {
             "type": "string",
             "format": "cid",

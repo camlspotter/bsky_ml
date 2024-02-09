@@ -4,11 +4,12 @@
   "defs": {
     "main": {
       "type": "query",
+      "description": "Get posts in a thread.",
       "parameters": {
         "type": "params",
         "required": ["uri"],
         "properties": {
-          "uri": {"type": "string", "format": "at-uri"},
+          "uri": { "type": "string", "format": "at-uri" },
           "depth": {
             "type": "integer",
             "default": 6,
@@ -40,9 +41,7 @@
           }
         }
       },
-      "errors": [
-        {"name": "NotFound"}
-      ]
+      "errors": [{ "name": "NotFound" }]
     }
   }
 }

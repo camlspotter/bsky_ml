@@ -43,7 +43,8 @@ let () =
     Xrpc.Bsky.Feed.GetAuthorFeed.f ~session conn
       { actor= session.handle;
         limit= Some 1L;
-        cursor = None }
+        cursor = None;
+        filter = None}
   in
   Format.eprintf "Ok %a@."
     (pp_as_json Xrpc.Bsky.Feed.GetAuthorFeed.yojson_of_output) (Result.get_ok resp);

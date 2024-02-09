@@ -46,12 +46,13 @@ end
 module Session = struct
   open Lexicon
   type t = server_createSession_output =
-    { accessJwt: string ;
-      refreshJwt: string ;
-      handle: handle ;
-      did: did ;
-      email: string option
-    }
+  { accessJwt: string ;
+    refreshJwt: string ;
+    handle: handle ;
+    did: did ;
+    didDoc: unknown option ;
+    email: string option ;
+    emailConfirmed: bool option }
 end
 
 let http_param conv (n : string) x = [n, (conv x : string)]

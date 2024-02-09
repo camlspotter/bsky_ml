@@ -13,7 +13,10 @@ module Path : sig
   val append : t -> string -> t
 end
 
-type error = { name : string; } [@@deriving yojson]
+type error =
+  { name : string;
+    description : string option;
+  } [@@deriving yojson]
 
 type ty =
   | String of string_
@@ -40,7 +43,8 @@ and token = { description : string; }
 
 and string_ = {
   description : string option;
-  knownValues : string list option;
+  knownValues: string list option;
+  enum : string list option;
   minLength : int option;
   maxLength : int option;
   maxGraphemes : int option;
@@ -50,7 +54,8 @@ and string_ = {
 and format =
   { format : string;
     description : string option;
-    knownValues : string list option;
+    knownValues: string list option;
+    enum : string list option;
     minLength : int option;
     maxLength : int option;
     maxGraphemes : int option;

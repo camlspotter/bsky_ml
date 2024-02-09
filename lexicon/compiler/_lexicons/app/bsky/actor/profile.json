@@ -4,6 +4,7 @@
   "defs": {
     "main": {
       "type": "record",
+      "description": "A declaration of a profile.",
       "key": "literal:self",
       "record": {
         "type": "object",
@@ -27,6 +28,10 @@
             "type": "blob",
             "accept": ["image/png", "image/jpeg"],
             "maxSize": 1000000
+          },
+          "labels": {
+            "type": "union",
+            "refs": ["com.atproto.label.defs#selfLabels"]
           }
         }
       }

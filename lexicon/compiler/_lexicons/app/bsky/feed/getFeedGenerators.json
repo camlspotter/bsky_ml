@@ -4,14 +4,14 @@
   "defs": {
     "main": {
       "type": "query",
-      "description": "Get information about a list of feed generators",
+      "description": "Get information about a list of feed generators.",
       "parameters": {
         "type": "params",
         "required": ["feeds"],
         "properties": {
           "feeds": {
             "type": "array",
-            "items": {"type": "string", "format": "at-uri"}
+            "items": { "type": "string", "format": "at-uri" }
           }
         }
       },
@@ -23,7 +23,10 @@
           "properties": {
             "feeds": {
               "type": "array",
-              "items": {"type": "ref", "ref": "app.bsky.feed.defs#generatorView"}
+              "items": {
+                "type": "ref",
+                "ref": "app.bsky.feed.defs#generatorView"
+              }
             }
           }
         }

@@ -8,6 +8,7 @@ let () =
   let conn =
     Xrpc.Conn.create (module Cohttp_lwt_unix.Client) "bsky.social"
   in
+  prerr_endline "connected";
   Subscription.SubscribeRepos.f conn
     {cursor= None}
     (fun () message ->

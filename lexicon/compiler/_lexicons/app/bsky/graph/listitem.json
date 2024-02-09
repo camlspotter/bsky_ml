@@ -4,15 +4,15 @@
   "defs": {
     "main": {
       "type": "record",
-      "description": "An item under a declared list of actors",
+      "description": "An item under a declared list of actors.",
       "key": "tid",
       "record": {
         "type": "object",
         "required": ["subject", "list", "createdAt"],
         "properties": {
-          "subject": {"type": "string", "format": "did"},
-          "list": {"type": "string", "format": "at-uri"},
-          "createdAt": {"type": "string", "format": "datetime"}
+          "subject": { "type": "string", "format": "did" },
+          "list": { "type": "string", "format": "at-uri" },
+          "createdAt": { "type": "string", "format": "datetime" }
         }
       }
     }

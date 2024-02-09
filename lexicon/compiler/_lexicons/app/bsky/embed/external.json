@@ -1,7 +1,7 @@
 {
   "lexicon": 1,
   "id": "app.bsky.embed.external",
-  "description": "A representation of some externally linked content, embedded in another form of content",
+  "description": "A representation of some externally linked content, embedded in another form of content.",
   "defs": {
     "main": {
       "type": "object",
@@ -15,11 +15,11 @@
     },
     "external": {
       "type": "object",
-      "required":  ["uri", "title", "description"],
+      "required": ["uri", "title", "description"],
       "properties": {
-        "uri": {"type": "string", "format": "uri"},
-        "title": {"type": "string"},
-        "description": {"type": "string"},
+        "uri": { "type": "string", "format": "uri" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
         "thumb": {
           "type": "blob",
           "accept": ["image/*"],
@@ -39,12 +39,12 @@
     },
     "viewExternal": {
       "type": "object",
-      "required":  ["uri", "title", "description"],
+      "required": ["uri", "title", "description"],
       "properties": {
-        "uri": {"type": "string", "format": "uri"},
-        "title": {"type": "string"},
-        "description": {"type": "string"},
-        "thumb": {"type": "string"}
+        "uri": { "type": "string", "format": "uri" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "thumb": { "type": "string" }
       }
     }
   }

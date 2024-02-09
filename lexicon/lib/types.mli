@@ -16,7 +16,8 @@ type token = { description : string; } [@@deriving yojson]
 type string_ = {
   format : string option;
   description : string option;
-  knownValues : string list option;
+  knownValues: string list option [@yojson.option];
+  enum : string list option [@yojson.option];
   minLength : int option;
   maxLength : int option;
   maxGraphemes : int option;
@@ -85,7 +86,10 @@ type 'ty type_ =
 
 type ty = Ty of ty type_ [@@deriving yojson]
 
-type error = { name : string; } [@@deriving yojson]
+type error =
+  { name : string;
+    description : string option;
+  } [@@deriving yojson]
 
 type message =
   { schema : ty } [@@deriving yojson]
@@ -119,6 +123,7 @@ type procedure =
     input : input option;
     output : output option;
     errors : error list option;
+    parameters : ty option;
   } [@@deriving yojson]
 
 (** Collection of [ty] whose key is [key] *)
