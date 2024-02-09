@@ -93,6 +93,7 @@ let subscription (type parameters) (type message)
     Printf.sprintf "wss://%s/xrpc/%s"
       conn.Xrpc.Conn.host (Nsid.to_string Intf.nsid)
   in
+  Format.eprintf "Connecting to %s@." uri;
   let* conn = connect (Uri.of_string uri) in
   let rec loop acc =
     let* cbors = read conn in
